@@ -47,6 +47,20 @@
 @implementation AFHTTPSessionManager
 @dynamic responseSerializer;
 
+static AFHTTPSessionManager *manager;
+
++ (AFHTTPSessionManager *)sharedHTTPSession{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        manager = [AFHTTPSessionManager manager];
+    });
+    return manager;
+}
+
+-(void)setBaseURL:(NSURL *)url{
+    _baseURL = url;
+}
+
 + (instancetype)manager {
     return [[[self class] alloc] initWithBaseURL:nil];
 }
