@@ -107,6 +107,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @name Initialization
 ///---------------------
 
++ (AFHTTPSessionManager *)sharedHTTPSession;
+
 /**
  Creates and returns an `AFHTTPSessionManager` object.
  */
@@ -134,6 +136,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithBaseURL:(nullable NSURL *)url
            sessionConfiguration:(nullable NSURLSessionConfiguration *)configuration NS_DESIGNATED_INITIALIZER;
 
+-(void)setBaseURL:(NSURL *)url;
 ///---------------------------
 /// @name Making HTTP Requests
 ///---------------------------
